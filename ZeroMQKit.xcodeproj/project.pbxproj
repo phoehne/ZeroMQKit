@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE94DF3714DEF8DA0039024D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE94DF3614DEF8DA0039024D /* Foundation.framework */; };
+		BE94DF3D14DEF8DA0039024D /* ZeroMQKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BE94DF3C14DEF8DA0039024D /* ZeroMQKit.m */; };
+		BE94DF4514DEF8DB0039024D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE94DF4414DEF8DB0039024D /* SenTestingKit.framework */; };
+		BE94DF4714DEF8DB0039024D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE94DF4614DEF8DB0039024D /* UIKit.framework */; };
+		BE94DF4814DEF8DB0039024D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE94DF3614DEF8DA0039024D /* Foundation.framework */; };
+		BE94DF4B14DEF8DB0039024D /* libZeroMQKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE94DF3314DEF8DA0039024D /* libZeroMQKit.a */; };
+		BE94DF5114DEF8DB0039024D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE94DF4F14DEF8DB0039024D /* InfoPlist.strings */; };
+		BE94DF5414DEF8DB0039024D /* ZeroMQKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE94DF5314DEF8DB0039024D /* ZeroMQKitTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BE94DF4914DEF8DB0039024D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE94DF2A14DEF8DA0039024D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE94DF3214DEF8DA0039024D;
+			remoteInfo = ZeroMQKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BE94DF3314DEF8DA0039024D /* libZeroMQKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZeroMQKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE94DF3614DEF8DA0039024D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BE94DF3A14DEF8DA0039024D /* ZeroMQKit-Prefix.pch */ = {isa = PBXFileReference; path = "ZeroMQKit-Prefix.pch"; sourceTree = "<group>"; };
+		BE94DF3B14DEF8DA0039024D /* ZeroMQKit.h */ = {isa = PBXFileReference; path = ZeroMQKit.h; sourceTree = "<group>"; };
+		BE94DF3C14DEF8DA0039024D /* ZeroMQKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZeroMQKit.m; sourceTree = "<group>"; };
+		BE94DF4314DEF8DB0039024D /* ZeroMQKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeroMQKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE94DF4414DEF8DB0039024D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		BE94DF4614DEF8DB0039024D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		BE94DF4E14DEF8DB0039024D /* ZeroMQKitTests-Info.plist */ = {isa = PBXFileReference; path = "ZeroMQKitTests-Info.plist"; sourceTree = "<group>"; };
+		BE94DF5014DEF8DB0039024D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BE94DF5214DEF8DB0039024D /* ZeroMQKitTests.h */ = {isa = PBXFileReference; path = ZeroMQKitTests.h; sourceTree = "<group>"; };
+		BE94DF5314DEF8DB0039024D /* ZeroMQKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZeroMQKitTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE94DF3014DEF8DA0039024D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE94DF3714DEF8DA0039024D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE94DF3F14DEF8DB0039024D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE94DF4514DEF8DB0039024D /* SenTestingKit.framework in Frameworks */,
+				BE94DF4714DEF8DB0039024D /* UIKit.framework in Frameworks */,
+				BE94DF4814DEF8DB0039024D /* Foundation.framework in Frameworks */,
+				BE94DF4B14DEF8DB0039024D /* libZeroMQKit.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE94DF2814DEF8DA0039024D = {
+			isa = PBXGroup;
+			children = (
+				BE94DF3814DEF8DA0039024D /* ZeroMQKit */,
+				BE94DF4C14DEF8DB0039024D /* ZeroMQKitTests */,
+				BE94DF3514DEF8DA0039024D /* Frameworks */,
+				BE94DF3414DEF8DA0039024D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BE94DF3414DEF8DA0039024D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE94DF3314DEF8DA0039024D /* libZeroMQKit.a */,
+				BE94DF4314DEF8DB0039024D /* ZeroMQKitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE94DF3514DEF8DA0039024D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE94DF3614DEF8DA0039024D /* Foundation.framework */,
+				BE94DF4414DEF8DB0039024D /* SenTestingKit.framework */,
+				BE94DF4614DEF8DB0039024D /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BE94DF3814DEF8DA0039024D /* ZeroMQKit */ = {
+			isa = PBXGroup;
+			children = (
+				BE94DF3B14DEF8DA0039024D /* ZeroMQKit.h */,
+				BE94DF3C14DEF8DA0039024D /* ZeroMQKit.m */,
+				BE94DF3914DEF8DA0039024D /* Supporting Files */,
+			);
+			path = ZeroMQKit;
+			sourceTree = "<group>";
+		};
+		BE94DF3914DEF8DA0039024D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BE94DF3A14DEF8DA0039024D /* ZeroMQKit-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BE94DF4C14DEF8DB0039024D /* ZeroMQKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				BE94DF5214DEF8DB0039024D /* ZeroMQKitTests.h */,
+				BE94DF5314DEF8DB0039024D /* ZeroMQKitTests.m */,
+				BE94DF4D14DEF8DB0039024D /* Supporting Files */,
+			);
+			path = ZeroMQKitTests;
+			sourceTree = "<group>";
+		};
+		BE94DF4D14DEF8DB0039024D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BE94DF4E14DEF8DB0039024D /* ZeroMQKitTests-Info.plist */,
+				BE94DF4F14DEF8DB0039024D /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BE94DF3114DEF8DA0039024D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BE94DF3214DEF8DA0039024D /* ZeroMQKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE94DF5714DEF8DB0039024D /* Build configuration list for PBXNativeTarget "ZeroMQKit" */;
+			buildPhases = (
+				BE94DF2F14DEF8DA0039024D /* Sources */,
+				BE94DF3014DEF8DA0039024D /* Frameworks */,
+				BE94DF3114DEF8DA0039024D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZeroMQKit;
+			productName = ZeroMQKit;
+			productReference = BE94DF3314DEF8DA0039024D /* libZeroMQKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		BE94DF4214DEF8DB0039024D /* ZeroMQKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE94DF5A14DEF8DB0039024D /* Build configuration list for PBXNativeTarget "ZeroMQKitTests" */;
+			buildPhases = (
+				BE94DF3E14DEF8DB0039024D /* Sources */,
+				BE94DF3F14DEF8DB0039024D /* Frameworks */,
+				BE94DF4014DEF8DB0039024D /* Resources */,
+				BE94DF4114DEF8DB0039024D /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE94DF4A14DEF8DB0039024D /* PBXTargetDependency */,
+			);
+			name = ZeroMQKitTests;
+			productName = ZeroMQKitTests;
+			productReference = BE94DF4314DEF8DB0039024D /* ZeroMQKitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE94DF2A14DEF8DA0039024D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = BE94DF2D14DEF8DA0039024D /* Build configuration list for PBXProject "ZeroMQKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BE94DF2814DEF8DA0039024D;
+			productRefGroup = BE94DF3414DEF8DA0039024D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE94DF3214DEF8DA0039024D /* ZeroMQKit */,
+				BE94DF4214DEF8DB0039024D /* ZeroMQKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE94DF4014DEF8DB0039024D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE94DF5114DEF8DB0039024D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BE94DF4114DEF8DB0039024D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE94DF2F14DEF8DA0039024D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE94DF3D14DEF8DA0039024D /* ZeroMQKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE94DF3E14DEF8DB0039024D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE94DF5414DEF8DB0039024D /* ZeroMQKitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BE94DF4A14DEF8DB0039024D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE94DF3214DEF8DA0039024D /* ZeroMQKit */;
+			targetProxy = BE94DF4914DEF8DB0039024D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BE94DF4F14DEF8DB0039024D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE94DF5014DEF8DB0039024D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BE94DF5514DEF8DB0039024D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BE94DF5614DEF8DB0039024D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BE94DF5814DEF8DB0039024D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/ZeroMQKit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZeroMQKit/ZeroMQKit-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BE94DF5914DEF8DB0039024D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/ZeroMQKit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZeroMQKit/ZeroMQKit-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		BE94DF5B14DEF8DB0039024D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZeroMQKit/ZeroMQKit-Prefix.pch";
+				INFOPLIST_FILE = "ZeroMQKitTests/ZeroMQKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		BE94DF5C14DEF8DB0039024D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZeroMQKit/ZeroMQKit-Prefix.pch";
+				INFOPLIST_FILE = "ZeroMQKitTests/ZeroMQKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE94DF2D14DEF8DA0039024D /* Build configuration list for PBXProject "ZeroMQKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE94DF5514DEF8DB0039024D /* Debug */,
+				BE94DF5614DEF8DB0039024D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE94DF5714DEF8DB0039024D /* Build configuration list for PBXNativeTarget "ZeroMQKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE94DF5814DEF8DB0039024D /* Debug */,
+				BE94DF5914DEF8DB0039024D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BE94DF5A14DEF8DB0039024D /* Build configuration list for PBXNativeTarget "ZeroMQKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE94DF5B14DEF8DB0039024D /* Debug */,
+				BE94DF5C14DEF8DB0039024D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BE94DF2A14DEF8DA0039024D /* Project object */;
+}

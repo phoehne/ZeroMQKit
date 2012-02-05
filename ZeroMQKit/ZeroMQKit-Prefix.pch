@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'ZeroMQKit' target in the 'ZeroMQKit' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
