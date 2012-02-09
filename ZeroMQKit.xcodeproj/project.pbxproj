@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE595CCB14E364F800EB3F10 /* TestBasicFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = BE595CCA14E364F800EB3F10 /* TestBasicFunctions.m */; };
 		BE94DF3714DEF8DA0039024D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE94DF3614DEF8DA0039024D /* Foundation.framework */; };
 		BE94DF3D14DEF8DA0039024D /* ZeroMQKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BE94DF3C14DEF8DA0039024D /* ZeroMQKit.m */; };
 		BE94DF4514DEF8DB0039024D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE94DF4414DEF8DB0039024D /* SenTestingKit.framework */; };
@@ -211,6 +212,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE595CC914E364F800EB3F10 /* TestBasicFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestBasicFunctions.h; sourceTree = "<group>"; };
+		BE595CCA14E364F800EB3F10 /* TestBasicFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestBasicFunctions.m; sourceTree = "<group>"; };
 		BE94DF3314DEF8DA0039024D /* libZeroMQKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZeroMQKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE94DF3614DEF8DA0039024D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BE94DF3A14DEF8DA0039024D /* ZeroMQKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZeroMQKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -432,6 +435,8 @@
 				BE94DF5214DEF8DB0039024D /* ZeroMQKitTests.h */,
 				BE94DF5314DEF8DB0039024D /* ZeroMQKitTests.m */,
 				BE94DF4D14DEF8DB0039024D /* Supporting Files */,
+				BE595CC914E364F800EB3F10 /* TestBasicFunctions.h */,
+				BE595CCA14E364F800EB3F10 /* TestBasicFunctions.m */,
 			);
 			path = ZeroMQKitTests;
 			sourceTree = "<group>";
@@ -877,6 +882,7 @@
 				BE94E08A14DEF99C0039024D /* xsub.cpp in Sources */,
 				BE94E08F14DEF99C0039024D /* zmq_utils.cpp in Sources */,
 				BE94E09114DEF99C0039024D /* zmq.cpp in Sources */,
+				BE595CCB14E364F800EB3F10 /* TestBasicFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,6 +1023,7 @@
 				BE94DF5914DEF8DB0039024D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE94DF5A14DEF8DB0039024D /* Build configuration list for PBXNativeTarget "ZeroMQKitTests" */ = {
 			isa = XCConfigurationList;
@@ -1025,6 +1032,7 @@
 				BE94DF5C14DEF8DB0039024D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
