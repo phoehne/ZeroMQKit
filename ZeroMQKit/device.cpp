@@ -20,7 +20,7 @@
 
 #include <stddef.h>
 
-#include "../include/zmq.h"
+#include "zmq.h"
 
 #include "device.hpp"
 #include "socket_base.hpp"

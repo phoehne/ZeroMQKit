@@ -21,7 +21,7 @@
 
 #include "platform.hpp"
 
-#include "../include/zmq_utils.h"
+#include "zmq_utils.h"
 
 #include <stdlib.h>
 

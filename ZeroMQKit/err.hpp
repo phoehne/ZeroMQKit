@@ -23,7 +23,7 @@
 #define __ZMQ_ERR_HPP_INCLUDED__
 
 //  0MQ-specific error codes are defined in zmq.h
-#include "../include/zmq.h"
+#include "zmq.h"
 
 #include <assert.h>
 #if defined WINCE

@@ -19,7 +19,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #define ZMQ_TYPE_UNSAFE
-#include "../include/zmq.h"
+#include "zmq.h"
 
 #include "platform.hpp"
 

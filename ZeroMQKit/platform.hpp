@@ -197,6 +197,8 @@
 /* Have OpenPGM extension */
 /* #undef ZMQ_HAVE_OPENPGM */
 
+#define ZMQ_HAVE_UIO 1
+
 /* Have DarwinOSX OS */
 #define ZMQ_HAVE_OSX 1
 
