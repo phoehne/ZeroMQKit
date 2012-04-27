@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		BE595CCB14E364F800EB3F10 /* TestBasicFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = BE595CCA14E364F800EB3F10 /* TestBasicFunctions.m */; };
+		BE617542154A5BC600229AA9 /* dealer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE617540154A5BC600229AA9 /* dealer.cpp */; };
+		BE617543154A5BC600229AA9 /* dealer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BE617541154A5BC600229AA9 /* dealer.hpp */; };
+		BE617546154A5BE300229AA9 /* address.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE617544154A5BE300229AA9 /* address.cpp */; };
+		BE617547154A5BE300229AA9 /* address.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BE617545154A5BE300229AA9 /* address.hpp */; };
+		BE61754A154A5C2900229AA9 /* device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE617548154A5C2900229AA9 /* device.cpp */; };
+		BE61754B154A5C2900229AA9 /* device.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BE617549154A5C2900229AA9 /* device.hpp */; };
+		BE61754E154A5C8500229AA9 /* router.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE61754C154A5C8500229AA9 /* router.cpp */; };
+		BE61754F154A5C8500229AA9 /* router.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BE61754D154A5C8500229AA9 /* router.hpp */; };
 		BE94DF3714DEF8DA0039024D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE94DF3614DEF8DA0039024D /* Foundation.framework */; };
 		BE94DF3D14DEF8DA0039024D /* ZeroMQKit.m in Sources */ = {isa = PBXBuildFile; fileRef = BE94DF3C14DEF8DA0039024D /* ZeroMQKit.m */; };
 		BE94DF4514DEF8DB0039024D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE94DF4414DEF8DB0039024D /* SenTestingKit.framework */; };
@@ -181,12 +189,6 @@
 		BE94E08014DEF99C0039024D /* xpub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE94DFD014DEF99C0039024D /* xpub.cpp */; };
 		BE94E08114DEF99C0039024D /* xpub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE94DFD014DEF99C0039024D /* xpub.cpp */; };
 		BE94E08214DEF99C0039024D /* xpub.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BE94DFD114DEF99C0039024D /* xpub.hpp */; };
-		BE94E08314DEF99C0039024D /* xrep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE94DFD214DEF99C0039024D /* xrep.cpp */; };
-		BE94E08414DEF99C0039024D /* xrep.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE94DFD214DEF99C0039024D /* xrep.cpp */; };
-		BE94E08514DEF99C0039024D /* xrep.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BE94DFD314DEF99C0039024D /* xrep.hpp */; };
-		BE94E08614DEF99C0039024D /* xreq.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE94DFD414DEF99C0039024D /* xreq.cpp */; };
-		BE94E08714DEF99C0039024D /* xreq.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE94DFD414DEF99C0039024D /* xreq.cpp */; };
-		BE94E08814DEF99C0039024D /* xreq.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BE94DFD514DEF99C0039024D /* xreq.hpp */; };
 		BE94E08914DEF99C0039024D /* xsub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE94DFD614DEF99C0039024D /* xsub.cpp */; };
 		BE94E08A14DEF99C0039024D /* xsub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BE94DFD614DEF99C0039024D /* xsub.cpp */; };
 		BE94E08B14DEF99C0039024D /* xsub.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BE94DFD714DEF99C0039024D /* xsub.hpp */; };
@@ -214,6 +216,14 @@
 /* Begin PBXFileReference section */
 		BE595CC914E364F800EB3F10 /* TestBasicFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestBasicFunctions.h; sourceTree = "<group>"; };
 		BE595CCA14E364F800EB3F10 /* TestBasicFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestBasicFunctions.m; sourceTree = "<group>"; };
+		BE617540154A5BC600229AA9 /* dealer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dealer.cpp; sourceTree = "<group>"; };
+		BE617541154A5BC600229AA9 /* dealer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = dealer.hpp; sourceTree = "<group>"; };
+		BE617544154A5BE300229AA9 /* address.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = address.cpp; sourceTree = "<group>"; };
+		BE617545154A5BE300229AA9 /* address.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = address.hpp; sourceTree = "<group>"; };
+		BE617548154A5C2900229AA9 /* device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = device.cpp; sourceTree = "<group>"; };
+		BE617549154A5C2900229AA9 /* device.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = device.hpp; sourceTree = "<group>"; };
+		BE61754C154A5C8500229AA9 /* router.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = router.cpp; sourceTree = "<group>"; };
+		BE61754D154A5C8500229AA9 /* router.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = router.hpp; sourceTree = "<group>"; };
 		BE94DF3314DEF8DA0039024D /* libZeroMQKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libZeroMQKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE94DF3614DEF8DA0039024D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BE94DF3A14DEF8DA0039024D /* ZeroMQKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZeroMQKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -341,10 +351,6 @@
 		BE94DFCF14DEF99C0039024D /* wire.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = wire.hpp; sourceTree = "<group>"; };
 		BE94DFD014DEF99C0039024D /* xpub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xpub.cpp; sourceTree = "<group>"; };
 		BE94DFD114DEF99C0039024D /* xpub.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = xpub.hpp; sourceTree = "<group>"; };
-		BE94DFD214DEF99C0039024D /* xrep.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xrep.cpp; sourceTree = "<group>"; };
-		BE94DFD314DEF99C0039024D /* xrep.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = xrep.hpp; sourceTree = "<group>"; };
-		BE94DFD414DEF99C0039024D /* xreq.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xreq.cpp; sourceTree = "<group>"; };
-		BE94DFD514DEF99C0039024D /* xreq.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = xreq.hpp; sourceTree = "<group>"; };
 		BE94DFD614DEF99C0039024D /* xsub.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = xsub.cpp; sourceTree = "<group>"; };
 		BE94DFD714DEF99C0039024D /* xsub.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = xsub.hpp; sourceTree = "<group>"; };
 		BE94DFD814DEF99C0039024D /* ypipe.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ypipe.hpp; sourceTree = "<group>"; };
@@ -453,6 +459,14 @@
 		BE94E09614DEF9BE0039024D /* libzmq */ = {
 			isa = PBXGroup;
 			children = (
+				BE61754C154A5C8500229AA9 /* router.cpp */,
+				BE61754D154A5C8500229AA9 /* router.hpp */,
+				BE617548154A5C2900229AA9 /* device.cpp */,
+				BE617549154A5C2900229AA9 /* device.hpp */,
+				BE617544154A5BE300229AA9 /* address.cpp */,
+				BE617545154A5BE300229AA9 /* address.hpp */,
+				BE617540154A5BC600229AA9 /* dealer.cpp */,
+				BE617541154A5BC600229AA9 /* dealer.hpp */,
 				BE94E09714DEFB2D0039024D /* platform.hpp */,
 				BE94DF5D14DEF99C0039024D /* array.hpp */,
 				BE94DF5E14DEF99C0039024D /* atomic_counter.hpp */,
@@ -569,10 +583,6 @@
 				BE94DFCF14DEF99C0039024D /* wire.hpp */,
 				BE94DFD014DEF99C0039024D /* xpub.cpp */,
 				BE94DFD114DEF99C0039024D /* xpub.hpp */,
-				BE94DFD214DEF99C0039024D /* xrep.cpp */,
-				BE94DFD314DEF99C0039024D /* xrep.hpp */,
-				BE94DFD414DEF99C0039024D /* xreq.cpp */,
-				BE94DFD514DEF99C0039024D /* xreq.hpp */,
 				BE94DFD614DEF99C0039024D /* xsub.cpp */,
 				BE94DFD714DEF99C0039024D /* xsub.hpp */,
 				BE94DFD814DEF99C0039024D /* ypipe.hpp */,
@@ -655,14 +665,16 @@
 				BE94E07E14DEF99C0039024D /* windows.hpp in Headers */,
 				BE94E07F14DEF99C0039024D /* wire.hpp in Headers */,
 				BE94E08214DEF99C0039024D /* xpub.hpp in Headers */,
-				BE94E08514DEF99C0039024D /* xrep.hpp in Headers */,
-				BE94E08814DEF99C0039024D /* xreq.hpp in Headers */,
 				BE94E08B14DEF99C0039024D /* xsub.hpp in Headers */,
 				BE94E08C14DEF99C0039024D /* ypipe.hpp in Headers */,
 				BE94E08D14DEF99C0039024D /* yqueue.hpp in Headers */,
 				BE94E09414DEF9B30039024D /* zmq_utils.h in Headers */,
 				BE94E09514DEF9B30039024D /* zmq.h in Headers */,
 				BE94E09814DEFB2D0039024D /* platform.hpp in Headers */,
+				BE617543154A5BC600229AA9 /* dealer.hpp in Headers */,
+				BE617547154A5BE300229AA9 /* address.hpp in Headers */,
+				BE61754B154A5C2900229AA9 /* device.hpp in Headers */,
+				BE61754F154A5C8500229AA9 /* router.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,11 +826,13 @@
 				BE94E07814DEF99C0039024D /* thread.cpp in Sources */,
 				BE94E07B14DEF99C0039024D /* trie.cpp in Sources */,
 				BE94E08014DEF99C0039024D /* xpub.cpp in Sources */,
-				BE94E08314DEF99C0039024D /* xrep.cpp in Sources */,
-				BE94E08614DEF99C0039024D /* xreq.cpp in Sources */,
 				BE94E08914DEF99C0039024D /* xsub.cpp in Sources */,
 				BE94E08E14DEF99C0039024D /* zmq_utils.cpp in Sources */,
 				BE94E09014DEF99C0039024D /* zmq.cpp in Sources */,
+				BE617542154A5BC600229AA9 /* dealer.cpp in Sources */,
+				BE617546154A5BE300229AA9 /* address.cpp in Sources */,
+				BE61754A154A5C2900229AA9 /* device.cpp in Sources */,
+				BE61754E154A5C8500229AA9 /* router.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,8 +891,6 @@
 				BE94E07914DEF99C0039024D /* thread.cpp in Sources */,
 				BE94E07C14DEF99C0039024D /* trie.cpp in Sources */,
 				BE94E08114DEF99C0039024D /* xpub.cpp in Sources */,
-				BE94E08414DEF99C0039024D /* xrep.cpp in Sources */,
-				BE94E08714DEF99C0039024D /* xreq.cpp in Sources */,
 				BE94E08A14DEF99C0039024D /* xsub.cpp in Sources */,
 				BE94E08F14DEF99C0039024D /* zmq_utils.cpp in Sources */,
 				BE94E09114DEF99C0039024D /* zmq.cpp in Sources */,

@@ -1,6 +1,6 @@
 /*
+    Copyright (c) 2007-2012 iMatix Corporation
     Copyright (c) 2009-2011 250bpm s.r.o.
-    Copyright (c) 2007-2009 iMatix Corporation
     Copyright (c) 2011 VMware, Inc.
     Copyright (c) 2007-2011 Other contributors as noted in the AUTHORS file
 
@@ -23,7 +23,7 @@
 #ifndef __ZMQ_REQ_HPP_INCLUDED__
 #define __ZMQ_REQ_HPP_INCLUDED__
 
-#include "xreq.hpp"
+#include "dealer.hpp"
 #include "stdint.hpp"
 
 namespace zmq
@@ -34,11 +34,11 @@ namespace zmq
     class io_thread_t;
     class socket_base_t;
 
-    class req_t : public xreq_t
+    class req_t : public dealer_t
     {
     public:
 
-        req_t (zmq::ctx_t *parent_, uint32_t tid_);
+        req_t (zmq::ctx_t *parent_, uint32_t tid_, int sid_);
         ~req_t ();
 
         //  Overloads of functions from socket_base_t.
@@ -61,13 +61,13 @@ namespace zmq
         const req_t &operator = (const req_t&);
     };
 
-    class req_session_t : public xreq_session_t
+    class req_session_t : public dealer_session_t
     {
     public:
 
         req_session_t (zmq::io_thread_t *io_thread_, bool connect_,
             zmq::socket_base_t *socket_, const options_t &options_,
-            const char *protocol_, const char *address_);
+            const address_t *addr_);
         ~req_session_t ();
 
         //  Overloads of the functions from session_base_t.

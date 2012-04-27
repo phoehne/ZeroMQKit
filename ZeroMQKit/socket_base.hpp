@@ -1,6 +1,6 @@
 /*
+    Copyright (c) 2007-2012 iMatix Corporation
     Copyright (c) 2009-2011 250bpm s.r.o.
-    Copyright (c) 2007-2009 iMatix Corporation
     Copyright (c) 2011 VMware, Inc.
     Copyright (c) 2007-2011 Other contributors as noted in the AUTHORS file
 
@@ -24,6 +24,7 @@
 #define __ZMQ_SOCKET_BASE_HPP_INCLUDED__
 
 #include <string>
+#include <map>
 
 #include "own.hpp"
 #include "array.hpp"
@@ -33,6 +34,7 @@
 #include "i_poll_events.hpp"
 #include "mailbox.hpp"
 #include "stdint.hpp"
+#include "clock.hpp"
 #include "pipe.hpp"
 
 namespace zmq
@@ -57,7 +59,7 @@ namespace zmq
 
         //  Create a socket of a specified type.
         static socket_base_t *create (int type_, zmq::ctx_t *parent_,
-            uint32_t tid_);
+            uint32_t tid_, int sid_);
 
         //  Returns the mailbox associated with this socket.
         mailbox_t *get_mailbox ();
@@ -71,6 +73,7 @@ namespace zmq
         int getsockopt (int option_, void *optval_, size_t *optvallen_);
         int bind (const char *addr_);
         int connect (const char *addr_);
+        int term_endpoint (const char *addr_);
         int send (zmq::msg_t *msg_, int flags_);
         int recv (zmq::msg_t *msg_, int flags_);
         int close ();
@@ -95,13 +98,11 @@ namespace zmq
         void write_activated (pipe_t *pipe_);
         void hiccuped (pipe_t *pipe_);
         void terminated (pipe_t *pipe_);
-        bool thread_safe() const { return thread_safe_flag; }
-        void set_thread_safe(); // should be in constructor, here for compat
         void lock();
         void unlock();
     protected:
 
-        socket_base_t (zmq::ctx_t *parent_, uint32_t tid_);
+        socket_base_t (zmq::ctx_t *parent_, uint32_t tid_, int sid_);
         virtual ~socket_base_t ();
 
         //  Concrete algorithms for the x- methods are to be defined by
@@ -133,6 +134,12 @@ namespace zmq
         void process_destroy ();
 
     private:
+        //  Creates new endpoint ID and adds the endpoint to the map.
+        void add_endpoint (const char *addr_, own_t *endpoint_);
+
+        //  Map of open endpoints.
+        typedef std::multimap <std::string, own_t *> endpoints_t;
+        endpoints_t endpoints;
 
         //  To be called after processing commands or invoking any command
         //  handlers explicitly. If required, it will deallocate the socket.
@@ -196,9 +203,11 @@ namespace zmq
         //  True if the last message received had MORE flag set.
         bool rcvmore;
 
+        //  Improves efficiency of time measurement.
+        clock_t clock;
+
         socket_base_t (const socket_base_t&);
         const socket_base_t &operator = (const socket_base_t&);
-        bool thread_safe_flag;
         mutex_t sync;
     };
 

@@ -24,8 +24,8 @@
 #include "msg.hpp"
 #include "pipe.hpp"
 
-zmq::pull_t::pull_t (class ctx_t *parent_, uint32_t tid_) :
-    socket_base_t (parent_, tid_)
+zmq::pull_t::pull_t (class ctx_t *parent_, uint32_t tid_, int sid_) :
+    socket_base_t (parent_, tid_, sid_)
 {
     options.type = ZMQ_PULL;
 }
@@ -52,7 +52,7 @@ void zmq::pull_t::xterminated (pipe_t *pipe_)
 
 int zmq::pull_t::xrecv (msg_t *msg_, int flags_)
 {
-    return fq.recv (msg_, flags_);
+    return fq.recv (msg_);
 }
 
 bool zmq::pull_t::xhas_in ()
@@ -62,9 +62,8 @@ bool zmq::pull_t::xhas_in ()
 
 zmq::pull_session_t::pull_session_t (io_thread_t *io_thread_, bool connect_,
       socket_base_t *socket_, const options_t &options_,
-      const char *protocol_, const char *address_) :
-    session_base_t (io_thread_, connect_, socket_, options_, protocol_,
-        address_)
+      const address_t *addr_) :
+    session_base_t (io_thread_, connect_, socket_, options_, addr_)
 {
 }
 

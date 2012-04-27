@@ -24,6 +24,7 @@
 #define __ZMQ_MSG_HPP_INCLUDE__
 
 #include <stddef.h>
+#include <stdio.h>
 
 #include "config.hpp"
 #include "atomic_counter.hpp"

@@ -23,10 +23,14 @@
 #define __ZMQ_ERR_HPP_INCLUDED__
 
 //  0MQ-specific error codes are defined in zmq.h
-#include "zmq.h"
+#include "../include/zmq.h"
 
 #include <assert.h>
+#if defined WINCE
+#include "..\builds\msvc\errno.hpp"
+#else
 #include <errno.h>
+#endif
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>

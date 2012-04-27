@@ -24,8 +24,8 @@
 #include "err.hpp"
 #include "msg.hpp"
 
-zmq::push_t::push_t (class ctx_t *parent_, uint32_t tid_) :
-    socket_base_t (parent_, tid_)
+zmq::push_t::push_t (class ctx_t *parent_, uint32_t tid_, int sid_) :
+    socket_base_t (parent_, tid_, sid_)
 {
     options.type = ZMQ_PUSH;
 }
@@ -62,9 +62,8 @@ bool zmq::push_t::xhas_out ()
 
 zmq::push_session_t::push_session_t (io_thread_t *io_thread_, bool connect_,
       socket_base_t *socket_, const options_t &options_,
-      const char *protocol_, const char *address_) :
-    session_base_t (io_thread_, connect_, socket_, options_, protocol_,
-        address_)
+      const address_t *addr_) :
+    session_base_t (io_thread_, connect_, socket_, options_, addr_)
 {
 }
 

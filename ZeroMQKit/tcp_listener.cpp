@@ -21,7 +21,7 @@
 
 #include <new>
 
-#include <string.h>
+#include <string>
 
 #include "platform.hpp"
 #include "tcp_listener.hpp"
@@ -52,7 +52,6 @@ zmq::tcp_listener_t::tcp_listener_t (io_thread_t *io_thread_,
       socket_base_t *socket_, const options_t &options_) :
     own_t (io_thread_, options_),
     io_object_t (io_thread_),
-    has_file (false),
     s (retired_fd),
     socket (socket_)
 {
@@ -74,6 +73,7 @@ void zmq::tcp_listener_t::process_plug ()
 void zmq::tcp_listener_t::process_term (int linger_)
 {
     rm_fd (handle);
+    close ();
     own_t::process_term (linger_);
 }
 
@@ -87,6 +87,7 @@ void zmq::tcp_listener_t::in_event ()
         return;
 
     tune_tcp_socket (fd);
+    tune_tcp_keepalives (fd, options.tcp_keepalive, options.tcp_keepalive_cnt, options.tcp_keepalive_idle, options.tcp_keepalive_intvl);
 
     //  Create the engine object for this connection.
     stream_engine_t *engine = new (std::nothrow) stream_engine_t (fd, options);
@@ -99,7 +100,7 @@ void zmq::tcp_listener_t::in_event ()
 
     //  Create and launch a session object. 
     session_base_t *session = session_base_t::create (io_thread, false, socket,
-        options, NULL, NULL);
+        options, NULL);
     errno_assert (session);
     session->inc_seqnum ();
     launch_child (session);
@@ -117,6 +118,22 @@ void zmq::tcp_listener_t::close ()
     errno_assert (rc == 0);
 #endif
     s = retired_fd;
+}
+
+int zmq::tcp_listener_t::get_address (std::string &addr_)
+{
+    // Get the details of the TCP socket
+    struct sockaddr_storage ss;
+    socklen_t sl = sizeof (ss);
+    int rc = getsockname (s, (struct sockaddr *) &ss, &sl);
+
+    if (rc != 0) {
+        addr_.clear ();
+        return rc;
+    }
+
+    tcp_address_t addr ((struct sockaddr *) &ss, sl);
+    return addr.to_string (addr_);
 }
 
 int zmq::tcp_listener_t::set_address (const char *addr_)
@@ -199,7 +216,11 @@ zmq::fd_t zmq::tcp_listener_t::accept ()
 {
     //  Accept one connection and deal with different failure modes.
     zmq_assert (s != retired_fd);
-    fd_t sock = ::accept (s, NULL, NULL);
+
+    struct sockaddr_storage ss = {0};
+    socklen_t ss_len = sizeof (ss);
+    fd_t sock = ::accept (s, (struct sockaddr *) &ss, &ss_len);
+
 #ifdef ZMQ_HAVE_WINDOWS
     if (sock == INVALID_SOCKET) {
         wsa_assert (WSAGetLastError () == WSAEWOULDBLOCK ||
@@ -214,6 +235,26 @@ zmq::fd_t zmq::tcp_listener_t::accept ()
         return retired_fd;
     }
 #endif
+
+    if (!options.tcp_accept_filters.empty ()) {
+        bool matched = false;
+        for (options_t::tcp_accept_filters_t::size_type i = 0; i != options.tcp_accept_filters.size (); ++i) {
+            if (options.tcp_accept_filters[i].match_address ((struct sockaddr *) &ss, ss_len)) {
+                matched = true;
+                break;
+            }
+        }
+        if (!matched) {
+#ifdef ZMQ_HAVE_WINDOWS
+            int rc = closesocket (sock);
+            wsa_assert (rc != SOCKET_ERROR);
+#else
+            int rc = ::close (sock);
+            errno_assert (rc == 0);
+#endif
+            return retired_fd;
+        }
+    }
+
     return sock;
 }
-

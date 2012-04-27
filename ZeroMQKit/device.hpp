@@ -1,6 +1,5 @@
 /*
-    Copyright (c) 2010-2011 250bpm s.r.o.
-    Copyright (c) 2007-2009 iMatix Corporation
+    Copyright (c) 2007-2011 iMatix Corporation
     Copyright (c) 2007-2011 Other contributors as noted in the AUTHORS file
 
     This file is part of 0MQ.
@@ -19,29 +18,15 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __ZMQ_IP_HPP_INCLUDED__
-#define __ZMQ_IP_HPP_INCLUDED__
-
-#include "fd.hpp"
+#ifndef __ZMQ_DEVICE_HPP_INCLUDED__
+#define __ZMQ_DEVICE_HPP_INCLUDED__
 
 namespace zmq
 {
 
-    //  Same as socket(2), but allows for transparent tweaking the options.
-    fd_t open_socket (int domain_, int type_, int protocol_);
-
-    //  Tunes the supplied TCP socket for the best latency.
-    void tune_tcp_socket (fd_t s_);
-
-    //  Tunes TCP keep-alives
-    void tune_tcp_keepalives (fd_t s_, int keepalive_, int keepalive_cnt_, int keepalive_idle_, int keepalive_intvl_);
-
-    //  Sets the socket into non-blocking mode.
-    void unblock_socket (fd_t s_);
-
-    //  Enable IPv4-mapping of addresses in case it is disabled by default.
-    void enable_ipv4_mapping (fd_t s_);
+    int device (class socket_base_t *insocket_,
+        class socket_base_t *outsocket_);
 
 }
 
-#endif 
+#endif

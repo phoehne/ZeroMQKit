@@ -1,6 +1,6 @@
 /*
+    Copyright (c) 2007-2012 iMatix Corporation
     Copyright (c) 2009-2011 250bpm s.r.o.
-    Copyright (c) 2007-2009 iMatix Corporation
     Copyright (c) 2007-2011 Other contributors as noted in the AUTHORS file
 
     This file is part of 0MQ.
@@ -22,8 +22,8 @@
 #include "sub.hpp"
 #include "msg.hpp"
 
-zmq::sub_t::sub_t (class ctx_t *parent_, uint32_t tid_) :
-    xsub_t (parent_, tid_)
+zmq::sub_t::sub_t (class ctx_t *parent_, uint32_t tid_, int sid_) :
+    xsub_t (parent_, tid_, sid_)
 {
     options.type = ZMQ_SUB;
 
@@ -82,9 +82,8 @@ bool zmq::sub_t::xhas_out ()
 
 zmq::sub_session_t::sub_session_t (io_thread_t *io_thread_, bool connect_,
       socket_base_t *socket_, const options_t &options_,
-      const char *protocol_, const char *address_) :
-    xsub_session_t (io_thread_, connect_, socket_, options_, protocol_,
-        address_)
+      const address_t *addr_) :
+    xsub_session_t (io_thread_, connect_, socket_, options_, addr_)
 {
 }
 

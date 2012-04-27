@@ -45,6 +45,9 @@ namespace zmq
         //  Set address to listen on.
         int set_address (const char *addr_);
 
+        // Get the bound address for use with wildcard
+        int get_address (std::string &addr_);
+
     private:
 
         //  Handlers for incoming commands.
@@ -59,14 +62,12 @@ namespace zmq
 
         //  Accept the new connection. Returns the file descriptor of the
         //  newly created connection. The function may return retired_fd
-        //  if the connection was dropped while waiting in the listen backlog.
+        //  if the connection was dropped while waiting in the listen backlog
+        //  or was denied because of accept filters.
         fd_t accept ();
 
         //  Address to listen on.
         tcp_address_t address;
-
-        //  True, if the undelying file for UNIX domain socket exists.
-        bool has_file;
 
         //  Underlying socket.
         fd_t s;

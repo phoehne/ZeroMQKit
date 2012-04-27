@@ -83,6 +83,66 @@ void zmq::tune_tcp_socket (fd_t s_)
 #endif
 }
 
+void zmq::tune_tcp_keepalives (fd_t s_, int keepalive_, int keepalive_cnt_, int keepalive_idle_, int keepalive_intvl_)
+{
+    //  Tuning TCP keep-alives if platform allows it
+    //  All values = -1 means skip and leave it for OS
+#ifdef ZMQ_HAVE_SO_KEEPALIVE
+    if (keepalive_ != -1) {
+        int rc = setsockopt (s_, SOL_SOCKET, SO_KEEPALIVE, (char*) &keepalive_, sizeof (int));
+#ifdef ZMQ_HAVE_WINDOWS
+        wsa_assert (rc != SOCKET_ERROR);
+#else
+        errno_assert (rc == 0);
+#endif
+
+#ifdef ZMQ_HAVE_TCP_KEEPCNT
+        if (keepalive_cnt_ != -1) {
+            int rc = setsockopt (s_, IPPROTO_TCP, TCP_KEEPCNT, &keepalive_cnt_, sizeof (int));
+#ifdef ZMQ_HAVE_WINDOWS
+            wsa_assert (rc != SOCKET_ERROR);
+#else
+            errno_assert (rc == 0);
+#endif
+        }
+#endif // ZMQ_HAVE_TCP_KEEPCNT
+
+#ifdef ZMQ_HAVE_TCP_KEEPIDLE
+        if (keepalive_idle_ != -1) {
+            int rc = setsockopt (s_, IPPROTO_TCP, TCP_KEEPIDLE, &keepalive_idle_, sizeof (int));
+#ifdef ZMQ_HAVE_WINDOWS
+            wsa_assert (rc != SOCKET_ERROR);
+#else
+            errno_assert (rc == 0);
+#endif
+        }
+#else // ZMQ_HAVE_TCP_KEEPIDLE
+#ifdef ZMQ_HAVE_TCP_KEEPALIVE
+        if (keepalive_idle_ != -1) {
+            int rc = setsockopt (s_, IPPROTO_TCP, TCP_KEEPALIVE, &keepalive_idle_, sizeof (int));
+#ifdef ZMQ_HAVE_WINDOWS
+            wsa_assert (rc != SOCKET_ERROR);
+#else
+            errno_assert (rc == 0);
+#endif
+        }
+#endif // ZMQ_HAVE_TCP_KEEPALIVE
+#endif // ZMQ_HAVE_TCP_KEEPIDLE
+
+#ifdef ZMQ_HAVE_TCP_KEEPINTVL
+        if (keepalive_intvl_ != -1) {
+            int rc = setsockopt (s_, IPPROTO_TCP, TCP_KEEPINTVL, &keepalive_intvl_, sizeof (int));
+#ifdef ZMQ_HAVE_WINDOWS
+            wsa_assert (rc != SOCKET_ERROR);
+#else
+            errno_assert (rc == 0);
+#endif
+        }
+#endif // ZMQ_HAVE_TCP_KEEPINTVL
+    }
+#endif // ZMQ_HAVE_SO_KEEPALIVE
+}
+
 void zmq::unblock_socket (fd_t s_)
 {
 #ifdef ZMQ_HAVE_WINDOWS
@@ -90,14 +150,14 @@ void zmq::unblock_socket (fd_t s_)
     int rc = ioctlsocket (s_, FIONBIO, &nonblock);
     wsa_assert (rc != SOCKET_ERROR);
 #elif ZMQ_HAVE_OPENVMS
-	int nonblock = 1;
-	int rc = ioctl (s_, FIONBIO, &nonblock);
+    int nonblock = 1;
+    int rc = ioctl (s_, FIONBIO, &nonblock);
     errno_assert (rc != -1);
 #else
-	int flags = fcntl (s_, F_GETFL, 0);
-	if (flags == -1)
+    int flags = fcntl (s_, F_GETFL, 0);
+    if (flags == -1)
         flags = 0;
-	int rc = fcntl (s_, F_SETFL, flags | O_NONBLOCK);
+    int rc = fcntl (s_, F_SETFL, flags | O_NONBLOCK);
     errno_assert (rc != -1);
 #endif
 }
@@ -119,4 +179,3 @@ void zmq::enable_ipv4_mapping (fd_t s_)
 #endif
 #endif
 }
-

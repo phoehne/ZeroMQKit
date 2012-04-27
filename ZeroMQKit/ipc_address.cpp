@@ -24,11 +24,22 @@
 
 #include "err.hpp"
 
-#include <string.h>
+#include <string>
+#include <sstream>
 
 zmq::ipc_address_t::ipc_address_t ()
 {
     memset (&address, 0, sizeof (address));
+}
+
+zmq::ipc_address_t::ipc_address_t (const sockaddr *sa, socklen_t sa_len)
+{
+    zmq_assert(sa && sa_len > 0);
+
+    memset (&address, 0, sizeof (address));
+    if (sa->sa_family == AF_UNIX) {
+        memcpy(&address, sa, sa_len);
+    }
 }
 
 zmq::ipc_address_t::~ipc_address_t ()
@@ -47,12 +58,25 @@ int zmq::ipc_address_t::resolve (const char *path_)
     return 0;
 }
 
-sockaddr *zmq::ipc_address_t::addr ()
+int zmq::ipc_address_t::to_string (std::string &addr_)
+{
+    if (address.sun_family != AF_UNIX) {
+        addr_.clear ();
+        return -1;
+    }
+
+    std::stringstream s;
+    s << "ipc://" << address.sun_path;
+    addr_ = s.str ();
+    return 0;
+}
+
+const sockaddr *zmq::ipc_address_t::addr () const
 {
     return (sockaddr*) &address;
 }
 
-socklen_t zmq::ipc_address_t::addrlen ()
+socklen_t zmq::ipc_address_t::addrlen () const
 {
     return (socklen_t) sizeof (address);
 }

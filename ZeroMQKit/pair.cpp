@@ -24,8 +24,8 @@
 #include "pipe.hpp"
 #include "msg.hpp"
 
-zmq::pair_t::pair_t (class ctx_t *parent_, uint32_t tid_) :
-    socket_base_t (parent_, tid_),
+zmq::pair_t::pair_t (class ctx_t *parent_, uint32_t tid_, int sid_) :
+    socket_base_t (parent_, tid_, sid_),
     pipe (NULL)
 {
     options.type = ZMQ_PAIR;
@@ -108,20 +108,13 @@ bool zmq::pair_t::xhas_out ()
     if (!pipe)
         return false;
 
-    msg_t msg;
-    int rc = msg.init ();
-    errno_assert (rc == 0);
-    bool result = pipe->check_write (&msg);
-    rc = msg.close ();
-    errno_assert (rc == 0);
-    return result;
+    return pipe->check_write ();
 }
 
 zmq::pair_session_t::pair_session_t (io_thread_t *io_thread_, bool connect_,
       socket_base_t *socket_, const options_t &options_,
-      const char *protocol_, const char *address_) :
-    session_base_t (io_thread_, connect_, socket_, options_, protocol_,
-         address_)
+      const address_t *addr_) :
+    session_base_t (io_thread_, connect_, socket_, options_, addr_)
 {
 }
 

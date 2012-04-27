@@ -1,6 +1,6 @@
 /*
+    Copyright (c) 2007-2012 iMatix Corporation
     Copyright (c) 2009-2011 250bpm s.r.o.
-    Copyright (c) 2007-2009 iMatix Corporation
     Copyright (c) 2011 VMware, Inc.
     Copyright (c) 2007-2011 Other contributors as noted in the AUTHORS file
 
@@ -48,7 +48,12 @@ zmq::options_t::options_t () :
     delay_on_disconnect (true),
     filter (false),
     send_identity (false),
-    recv_identity (false)
+    recv_identity (false),
+    tcp_keepalive (-1),
+    tcp_keepalive_cnt (-1),
+    tcp_keepalive_idle (-1),
+    tcp_keepalive_intvl (-1),
+    socket_id (0)
 {
 }
 
@@ -102,7 +107,7 @@ int zmq::options_t::setsockopt (int option_, const void *optval_,
         }
         rate = *((int*) optval_);
         return 0;
-        
+
     case ZMQ_RECOVERY_IVL:
         if (optvallen_ != sizeof (int) || *((int*) optval_) < 0) {
             errno = EINVAL;
@@ -140,7 +145,7 @@ int zmq::options_t::setsockopt (int option_, const void *optval_,
             errno = EINVAL;
             return -1;
         }
-        if (*((int*) optval_) < 0) {
+        if (*((int*) optval_) < -1) {
             errno = EINVAL;
             return -1;
         }
@@ -214,8 +219,101 @@ int zmq::options_t::setsockopt (int option_, const void *optval_,
             return 0;
         }
 
-    }
+    case ZMQ_TCP_KEEPALIVE:
+        {
+            if (optvallen_ != sizeof (int)) {
+                errno = EINVAL;
+                return -1;
+            }
+            int val = *((int*) optval_);
+            if (val != -1 && val != 0 && val != 1) {
+                errno = EINVAL;
+                return -1;
+            }
+#if defined ZMQ_HAVE_SO_KEEPALIVE
+            tcp_keepalive = val;
+#endif
+            return 0;
+        }
 
+    case ZMQ_TCP_KEEPALIVE_CNT:
+        {
+            if (optvallen_ != sizeof (int)) {
+                errno = EINVAL;
+                return -1;
+            }
+            int val = *((int*) optval_);
+            if (val <= 0 && val != -1) {
+                errno = EINVAL;
+                return -1;
+            }
+#if defined ZMQ_HAVE_SO_KEEPALIVE && defined ZMQ_HAVE_TCP_KEEPCNT
+            tcp_keepalive_cnt = val;
+#endif
+            return 0;
+        }
+
+    case ZMQ_TCP_KEEPALIVE_IDLE:
+        {
+            if (optvallen_ != sizeof (int)) {
+                errno = EINVAL;
+                return -1;
+            }
+            int val = *((int*) optval_);
+            if (val <= 0 && val != -1) {
+                errno = EINVAL;
+                return -1;
+            }
+
+#if defined ZMQ_HAVE_SO_KEEPALIVE && (defined ZMQ_HAVE_TCP_KEEPIDLE || defined ZMQ_HAVE_TCP_KEEPALIVE)
+            tcp_keepalive_idle = val;
+#endif
+            return 0;
+        }
+
+    case ZMQ_TCP_KEEPALIVE_INTVL:
+        {
+            if (optvallen_ != sizeof (int)) {
+                errno = EINVAL;
+                return -1;
+            }
+            int val = *((int*) optval_);
+            if (val <= 0 && val != -1) {
+                errno = EINVAL;
+                return -1;
+            }
+#if defined ZMQ_HAVE_SO_KEEPALIVE && defined ZMQ_HAVE_TCP_KEEPINTVL
+            tcp_keepalive_intvl = val;
+#endif
+            return 0;
+        }
+
+    case ZMQ_TCP_ACCEPT_FILTER:
+        {
+            if (optvallen_ == 0 && optval_ == NULL) {
+                tcp_accept_filters.clear ();
+                return 0;
+            }
+            else
+            if (optvallen_ < 1 || optvallen_ > 255 || optval_ == NULL || *((const char*) optval_) == 0) {
+                errno = EINVAL;
+                return -1;
+            }
+            else {
+                std::string filter_str ((const char*) optval_, optvallen_);
+
+                tcp_address_mask_t filter;
+                int rc = filter.resolve (filter_str.c_str (), ipv4only ? true : false);
+                if (rc != 0) {
+                    errno = EINVAL;
+                    return -1;
+                }
+                tcp_accept_filters.push_back(filter);
+
+                return 0;
+            }
+        }
+    }
     errno = EINVAL;
     return -1;
 }
@@ -268,7 +366,7 @@ int zmq::options_t::getsockopt (int option_, void *optval_, size_t *optvallen_)
         *((int*) optval_) = rate;
         *optvallen_ = sizeof (int);
         return 0;
-        
+
     case ZMQ_RECOVERY_IVL:
         if (*optvallen_ < sizeof (int)) {
             errno = EINVAL;
@@ -384,6 +482,52 @@ int zmq::options_t::getsockopt (int option_, void *optval_, size_t *optvallen_)
         }
         *((int*) optval_) = ipv4only;
         *optvallen_ = sizeof (int);
+        return 0;
+
+    case ZMQ_TCP_KEEPALIVE:
+        if (*optvallen_ < sizeof (int)) {
+            errno = EINVAL;
+            return -1;
+        }
+        *((int*) optval_) = tcp_keepalive;
+        *optvallen_ = sizeof (int);
+        return 0;
+
+    case ZMQ_TCP_KEEPALIVE_CNT:
+        if (*optvallen_ < sizeof (int)) {
+            errno = EINVAL;
+            return -1;
+        }
+        *((int*) optval_) = tcp_keepalive_cnt;
+        *optvallen_ = sizeof (int);
+        return 0;
+
+    case ZMQ_TCP_KEEPALIVE_IDLE:
+        if (*optvallen_ < sizeof (int)) {
+            errno = EINVAL;
+            return -1;
+        }
+        *((int*) optval_) = tcp_keepalive_idle;
+        *optvallen_ = sizeof (int);
+        return 0;
+
+    case ZMQ_TCP_KEEPALIVE_INTVL:
+        if (*optvallen_ < sizeof (int)) {
+            errno = EINVAL;
+            return -1;
+        }
+        *((int*) optval_) = tcp_keepalive_intvl;
+        *optvallen_ = sizeof (int);
+        return 0;
+
+    case ZMQ_LAST_ENDPOINT:
+        // don't allow string which cannot contain the entire message
+        if (*optvallen_ < last_endpoint.size() + 1) {
+            errno = EINVAL;
+            return -1;
+        }
+        memcpy (optval_, last_endpoint.c_str(), last_endpoint.size()+1);
+        *optvallen_ = last_endpoint.size()+1;
         return 0;
 
     }

@@ -39,7 +39,7 @@ namespace zmq
     {
     public:
 
-        xsub_t (zmq::ctx_t *parent_, uint32_t tid_);
+        xsub_t (zmq::ctx_t *parent_, uint32_t tid_, int sid_);
         ~xsub_t ();
 
     protected:
@@ -93,7 +93,7 @@ namespace zmq
 
         xsub_session_t (class io_thread_t *io_thread_, bool connect_,
             socket_base_t *socket_, const options_t &options_,
-            const char *protocol_, const char *address_);
+            const address_t *addr_);
         ~xsub_session_t ();
 
     private:

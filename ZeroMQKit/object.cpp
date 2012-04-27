@@ -149,14 +149,6 @@ void zmq::object_t::destroy_socket (socket_base_t *socket_)
     ctx->destroy_socket (socket_);
 }
 
-void zmq::object_t::log (const char *format_, ...)
-{
-    va_list args;
-    va_start (args, format_);
-    ctx->log (format_, args);
-    va_end (args);
-}
-
 zmq::io_thread_t *zmq::object_t::choose_io_thread (uint64_t affinity_)
 {
     return ctx->choose_io_thread (affinity_);
@@ -167,9 +159,6 @@ void zmq::object_t::send_stop ()
     //  'stop' command goes always from administrative thread to
     //  the current object. 
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = this;
     cmd.type = command_t::stop;
     ctx->send_command (tid, cmd);
@@ -181,9 +170,6 @@ void zmq::object_t::send_plug (own_t *destination_, bool inc_seqnum_)
         destination_->inc_seqnum ();
 
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = destination_;
     cmd.type = command_t::plug;
     send_command (cmd);
@@ -193,9 +179,6 @@ void zmq::object_t::send_own (own_t *destination_, own_t *object_)
 {
     destination_->inc_seqnum ();
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = destination_;
     cmd.type = command_t::own;
     cmd.args.own.object = object_;
@@ -209,9 +192,6 @@ void zmq::object_t::send_attach (session_base_t *destination_,
         destination_->inc_seqnum ();
 
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = destination_;
     cmd.type = command_t::attach;
     cmd.args.attach.engine = engine_;
@@ -225,9 +205,6 @@ void zmq::object_t::send_bind (own_t *destination_, pipe_t *pipe_,
         destination_->inc_seqnum ();
 
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = destination_;
     cmd.type = command_t::bind;
     cmd.args.bind.pipe = pipe_;
@@ -237,9 +214,6 @@ void zmq::object_t::send_bind (own_t *destination_, pipe_t *pipe_,
 void zmq::object_t::send_activate_read (pipe_t *destination_)
 {
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = destination_;
     cmd.type = command_t::activate_read;
     send_command (cmd);
@@ -249,9 +223,6 @@ void zmq::object_t::send_activate_write (pipe_t *destination_,
     uint64_t msgs_read_)
 {
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = destination_;
     cmd.type = command_t::activate_write;
     cmd.args.activate_write.msgs_read = msgs_read_;
@@ -261,9 +232,6 @@ void zmq::object_t::send_activate_write (pipe_t *destination_,
 void zmq::object_t::send_hiccup (pipe_t *destination_, void *pipe_)
 {
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = destination_;
     cmd.type = command_t::hiccup;
     cmd.args.hiccup.pipe = pipe_;
@@ -273,9 +241,6 @@ void zmq::object_t::send_hiccup (pipe_t *destination_, void *pipe_)
 void zmq::object_t::send_pipe_term (pipe_t *destination_)
 {
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = destination_;
     cmd.type = command_t::pipe_term;
     send_command (cmd);
@@ -284,9 +249,6 @@ void zmq::object_t::send_pipe_term (pipe_t *destination_)
 void zmq::object_t::send_pipe_term_ack (pipe_t *destination_)
 {
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = destination_;
     cmd.type = command_t::pipe_term_ack;
     send_command (cmd);
@@ -296,9 +258,6 @@ void zmq::object_t::send_term_req (own_t *destination_,
     own_t *object_)
 {
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = destination_;
     cmd.type = command_t::term_req;
     cmd.args.term_req.object = object_;
@@ -308,9 +267,6 @@ void zmq::object_t::send_term_req (own_t *destination_,
 void zmq::object_t::send_term (own_t *destination_, int linger_)
 {
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = destination_;
     cmd.type = command_t::term;
     cmd.args.term.linger = linger_;
@@ -320,9 +276,6 @@ void zmq::object_t::send_term (own_t *destination_, int linger_)
 void zmq::object_t::send_term_ack (own_t *destination_)
 {
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = destination_;
     cmd.type = command_t::term_ack;
     send_command (cmd);
@@ -331,9 +284,6 @@ void zmq::object_t::send_term_ack (own_t *destination_)
 void zmq::object_t::send_reap (class socket_base_t *socket_)
 {
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = ctx->get_reaper ();
     cmd.type = command_t::reap;
     cmd.args.reap.socket = socket_;
@@ -343,9 +293,6 @@ void zmq::object_t::send_reap (class socket_base_t *socket_)
 void zmq::object_t::send_reaped ()
 {
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = ctx->get_reaper ();
     cmd.type = command_t::reaped;
     send_command (cmd);
@@ -354,9 +301,6 @@ void zmq::object_t::send_reaped ()
 void zmq::object_t::send_done ()
 {
     command_t cmd;
-#if defined ZMQ_MAKE_VALGRIND_HAPPY
-    memset (&cmd, 0, sizeof (cmd));
-#endif
     cmd.destination = NULL;
     cmd.type = command_t::done;
     ctx->send_command (ctx_t::term_tid, cmd);
