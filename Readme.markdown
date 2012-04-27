@@ -11,7 +11,7 @@ Update 1 4/27/2012
 ------------------
 
 *READ THIS*
-There is an issue LIBZMQ-270(http://zeromq.jira.com/LIBZMQ-270) which
+There is an issue LIBZMQ-270(http://zeromq.jira.com/browse/LIBZMQ-270) which
 may be causing the pub sub test to fail.  I can reproduce the problem
 using simple C++ programs executing PUB/SUB behavior.  One of my
 tests (which weren't fantastic to begin with) are not working.  Be
